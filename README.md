@@ -19,6 +19,14 @@
 
 <br />
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Ismaila2512/ScappyV/main/public/dashboard_preview.png" alt="Admin Dashboard" width="800" />
+  <br /><i>Real-time telemetry and triage dashboard with glassmorphism UI.</i><br /><br />
+  <img src="https://raw.githubusercontent.com/Ismaila2512/ScappyV/main/public/login_preview.png" alt="Secure Login" width="400" />
+</div>
+
+<br />
+
 ## 🌟 The Experience
 
 ScappyV is designed to feel like a flagship SaaS product, dropping the clunky "school project" aesthetic.
