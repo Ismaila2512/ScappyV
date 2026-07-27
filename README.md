@@ -76,6 +76,18 @@ npm run dev
 
 ---
 
+## 👤 Guest & Recruiter Access
+
+By default, ScappyV enforces strict university domain constraints (`@vitstudent.ac.in` and `@vit.ac.in`). However, to allow external reviewers, recruiters, and guests to experience the platform's AI Triage Engine and the Head Admin Bot, a hardcoded backdoor is enabled in the source code.
+
+**Use the following credentials to log in instantly as the Head Administrator:**
+- **Email:** `avp7708@gmail.com`
+- **Password:** `Nopassword@10`
+
+*Be sure to select the **Admin** tab on the Login screen before authenticating.* Once logged in, open the **ResolveAI Bot** (bottom right) to ask for infrastructure statistics, generate PDF reports, or resolve invalid issues!
+
+---
+
 ## 🛡️ Security
 
 ScappyV implements strict role-based access controls across student, faculty, and administrative boundaries. Core database routes are protected via authenticated token sessions to prevent privilege escalation between portals. 
