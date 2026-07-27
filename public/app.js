@@ -289,8 +289,9 @@ DOM.loginForm.addEventListener('submit', async (e) => {
   }
 
   DOM.authError.classList.add('hidden');
-  DOM.btnLogin.querySelector('.btn-text').textContent = 'Signing in...';
   DOM.btnLogin.disabled = true;
+  const btnTxt = DOM.btnLogin.querySelector('.btn-text');
+  btnTxt.innerHTML = `<div class="spinner" style="width:16px;height:16px;border-width:2px;display:inline-block;vertical-align:middle;margin-right:8px;"></div> Authenticating...`;
 
   try {
     const res = await fetch('/api/auth/login', {
@@ -1098,7 +1099,9 @@ async function handleBotMessage() {
   botParams.input.value = '';
   addBotMsg(text, 'user');
 
-  addBotMsg("Thinking...", "ai");
+  // Typing indicator
+  const typingHtml = `<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
+  addBotMsg(typingHtml, "ai", true);
   const loadingNode = botParams.messages.lastChild;
 
   const t = text.toLowerCase();
@@ -1150,3 +1153,11 @@ async function handleBotMessage() {
   botParams.messages.removeChild(loadingNode);
   addBotMsg(aiResp, 'ai', isHtmlResp);
 }
+// Global Loader Removal
+window.addEventListener('load', () => {
+  const loader = document.getElementById('globalLoader');
+  if (loader) {
+    loader.style.opacity = '0';
+    setTimeout(() => loader.style.display = 'none', 600);
+  }
+});
