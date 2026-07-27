@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node --experimental-strip-types server.ts"
   },
+  "engines": { "node": "22.x" },
   "dependencies": {
     "dotenv": "^17.4.2",
     "jsforce": "^3.10.17"

@@ -4,10 +4,10 @@ import * as path from 'path';
 import { supabase } from './src/lib/supabase-db.ts';
 import { triageIssue } from './src/lib/triage-engine.ts';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
-const server = http.createServer(async (req, res) => {
+export default async function handler(req: any, res: any) {
   // CORS Basics for dev
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT');
@@ -379,8 +379,11 @@ Analyze the JSON data to answer the request accurately. Format your response STR
       res.end(content, 'utf-8');
     }
   });
-});
+}
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`[VIT ScappyV] Server running at http://localhost:${PORT}/`);
-});
+if (!process.env.VERCEL) {
+  const server = http.createServer(handler);
+  server.listen(PORT as number, '0.0.0.0', () => {
+    console.log(`[VIT ScappyV] Server running at http://localhost:${PORT}/`);
+  });
+}
