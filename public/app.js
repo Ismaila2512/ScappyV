@@ -519,7 +519,21 @@ DOM.issueForm.addEventListener('submit', async (e) => {
 // ============================================================
 // ADMIN PORTAL
 // ============================================================
-DOM.btnRefreshAdmin.addEventListener('click', loadAdminDashboard);
+DOM.btnRefreshAdmin.addEventListener('click', async () => {
+  const loader = document.getElementById('globalLoader');
+  if (loader) {
+    loader.style.display = 'flex';
+    // Needs a microscopic delay to transition from display:none to opacity block
+    setTimeout(() => loader.style.opacity = '1', 10);
+  }
+  await loadAdminDashboard();
+  if (loader) {
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 600);
+    }, 400); // give it a moment to show min time
+  }
+});
 
 async function loadAdminDashboard() {
   DOM.adminTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:#94a3b8;">Loading issues...</td></tr>';
@@ -1157,7 +1171,10 @@ async function handleBotMessage() {
 window.addEventListener('load', () => {
   const loader = document.getElementById('globalLoader');
   if (loader) {
-    loader.style.opacity = '0';
-    setTimeout(() => loader.style.display = 'none', 600);
+    // Keep the loading screen for 2.5s for the premium feel
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 800); // 800ms super smooth fadeout
+    }, 2500);
   }
 });

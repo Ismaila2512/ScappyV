@@ -2152,6 +2152,7 @@ div>.form-group {
 .bot-fab img {
   animation: aiBotFloat 3.5s ease-in-out infinite;
 }
+
 /* ========================================================
    PREMIUM LOADING STATES
    ======================================================== */
@@ -2160,31 +2161,121 @@ div>.form-group {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: var(--bg-deep);
+  background: rgba(10, 11, 22, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
 }
 
 .loader-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
 }
 
-.loader-logo {
-  width: 80px;
-  animation: pulse-glow 2s infinite alternate;
+.circular-dot-loader {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-spin {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  transform: translateZ(0);
+  will-change: transform;
+  animation: spin 3s linear infinite;
+}
+
+.loader-center-logo {
+  width: 60px;
+  z-index: 10;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  animation: pulse-glow 2.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loader-bouncing-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.loader-bouncing-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+
+.dot-purple {
+  background: #b854ff;
+  box-shadow: 0 0 10px #b854ff;
+  animation: bounce 0.8s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot-blue {
+  background: #5475ff;
+  box-shadow: 0 0 10px #5475ff;
+  animation: bounce 0.8s infinite alternate cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+}
+
+.dot-cyan {
+  background: #00f2fe;
+  box-shadow: 0 0 10px #00f2fe;
+  animation: bounce 0.8s infinite alternate cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) translateZ(0);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(-10px) translateZ(0);
+    opacity: 1;
+  }
+}
+
+.loader-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.loader-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 @keyframes pulse-glow {
-  0% { transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(111, 76, 255, 0.4)); }
-  100% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(111, 76, 255, 0.8)); }
+  0% {
+    transform: scale(0.95) translateZ(0);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.05) translateZ(0);
+    opacity: 1;
+  }
 }
 
-.global-spinner, .spinner {
+.spinner {
   width: 24px;
   height: 24px;
   border: 3px solid rgba(255, 255, 255, 0.1);
@@ -2193,18 +2284,20 @@ div>.form-group {
   animation: spin 1s linear infinite;
 }
 
-.global-spinner {
-  width: 40px;
-  height: 40px;
-  border-top-color: var(--accent-blue);
-}
-
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg) translateZ(0);
+  }
+
+  100% {
+    transform: rotate(360deg) translateZ(0);
+  }
 }
 
 /* Button Loading States */
-.btn-primary:disabled, .btn-submit:disabled, .btn-ghost:disabled {
+.btn-primary:disabled,
+.btn-submit:disabled,
+.btn-ghost:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   display: flex;
@@ -2233,10 +2326,24 @@ div>.form-group {
   animation: typing-bounce 1.4s infinite ease-in-out both;
 }
 
-.typing-dot:nth-child(1) { animation-delay: -0.32s; }
-.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
 
 @keyframes typing-bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); background: var(--accent-blue); }
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+    background: var(--accent-blue);
+  }
 }
