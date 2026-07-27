@@ -1,0 +1,13 @@
+{
+  "name": "scotty-chatbot",
+  "version": "1.0.0",
+  "description": "Salesforce Management Chatbot",
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-strip-types server.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "jsforce": "^3.10.17"
+  }
+}

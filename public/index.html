@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScappyV | VIT Campus Facility Management</title>
+  <meta name="description" content="AI-powered campus infrastructure management for VIT Vellore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ANIMATED BACKGROUND CANVAS -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- ================================================
+       AUTH PAGE
+  ================================================= -->
+  <div id="authPage" class="auth-page">
+
+    <!-- CENTER: Login Box -->
+    <div class="auth-wrapper standalone-card">
+      <div class="auth-card-panel">
+
+        <!-- TOP MIDDLE: Logo (Inside Box) -->
+        <div class="auth-logo-header">
+          <div class="logo-container">
+            <img src="logo.png" alt="ScappyV Logo" class="brand-icon-img" />
+          </div>
+          <div class="brand-text">
+            <h1>ScappyV</h1>
+
+          </div>
+        </div>
+
+        <div class="auth-card glass-card">
+
+          <!-- Role Tabs -->
+          <div class="role-tabs">
+            <button id="tabStudent" class="role-tab active" data-role="student">
+              <span class="tab-icon">
+                <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path class="draw-path" pathLength="100" d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path class="draw-path-delay" pathLength="100" d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </span>
+              Student
+            </button>
+            <button id="tabFaculty" class="role-tab" data-role="faculty">
+              <span class="tab-icon">
+                <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect class="draw-path" pathLength="100" x="3" y="3" width="18" height="14" rx="2" ry="2" />
+                  <path class="draw-path-delay" pathLength="100" d="M8 21h8M12 17v4M8 7h8M8 11h5" />
+                </svg>
+              </span>
+              Faculty
+            </button>
+            <button id="tabAdmin" class="role-tab" data-role="admin">
+              <span class="tab-icon">
+                <svg class="tab-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path class="draw-path" pathLength="100" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path class="draw-path-delay" pathLength="100" d="m9 12 2 2 4-4" />
+                </svg>
+              </span>
+              Admin
+            </button>
+          </div>
+
+          <!-- Auth Mode Switcher (Login / Signup) -->
+          <div class="auth-mode-switcher">
+            <button id="modeLogin" class="mode-btn active">Sign In</button>
+            <button id="modeSignup" class="mode-btn">Sign Up</button>
+          </div>
+
+          <!-- Form Container -->
+          <div id="formContainer">
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="auth-form-section">
+              <div class="form-group hidden" id="loginDepartmentGroup">
+                <label class="form-label">Department</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                      <path d="M9 22v-4h6v4"></path>
+                      <path d="M8 6h.01"></path>
+                      <path d="M16 6h.01"></path>
+                      <path d="M12 6h.01"></path>
+                      <path d="M12 10h.01"></path>
+                      <path d="M12 14h.01"></path>
+                      <path d="M16 10h.01"></path>
+                      <path d="M16 14h.01"></path>
+                      <path d="M8 10h.01"></path>
+                      <path d="M8 14h.01"></path>
+                    </svg>
+                  </span>
+                  <select id="loginDepartment" class="form-input">
+                    <option value="">Select Department...</option>
+                    <option value="ALL">Head (All Departments)</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="IT">IT</option>
+                    <option value="Housekeeping">Housekeeping</option>
+                    <option value="Hostel Office">Hostel Office</option>
+                    <option value="Safety/Security">Safety/Security</option>
+                    <option value="CDC">CDC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </span>
+                  <input type="email" id="loginEmail" class="form-input" placeholder="your@vit.ac.in"
+                    autocomplete="email" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  Password
+                  <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot password?</a>
+                </label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </span>
+                  <input type="password" id="loginPassword" class="form-input" placeholder="••••••••"
+                    autocomplete="current-password" />
+                  <button type="button" class="toggle-password" data-target="loginPassword">
+                    <svg class="eye-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div id="authError" class="form-error hidden">Invalid credentials.</div>
+              <button type="submit" class="btn-submit" id="btnLogin">
+                <span class="btn-text">Sign In</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </form>
+
+            <!-- SIGNUP FORM -->
+            <form id="signupForm" class="auth-form-section hidden">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </span>
+                  <input type="text" id="signupName" class="form-input" placeholder="Your Full Name"
+                    autocomplete="name" />
+                </div>
+              </div>
+              <div class="form-group hidden" id="signupDepartmentGroup">
+                <label class="form-label">Department</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                      <path d="M9 22v-4h6v4"></path>
+                      <path d="M8 6h.01"></path>
+                      <path d="M16 6h.01"></path>
+                      <path d="M12 6h.01"></path>
+                      <path d="M12 10h.01"></path>
+                      <path d="M12 14h.01"></path>
+                      <path d="M16 10h.01"></path>
+                      <path d="M16 14h.01"></path>
+                      <path d="M8 10h.01"></path>
+                      <path d="M8 14h.01"></path>
+                    </svg>
+                  </span>
+                  <select id="signupDepartment" class="form-input">
+                    <option value="">Select Department...</option>
+                    <option value="ALL">Head (All Departments)</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="IT">IT</option>
+                    <option value="Housekeeping">Housekeeping</option>
+                    <option value="Hostel Office">Hostel Office</option>
+                    <option value="Safety/Security">Safety/Security</option>
+                    <option value="CDC">CDC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </span>
+                  <input type="email" id="signupEmail" class="form-input" placeholder="your@vitstudent.ac.in"
+                    autocomplete="email" />
+                </div>
+                <div class="form-hint" id="emailDomainHint">Students: @vitstudent.ac.in — Faculty/Admin: @vit.ac.in
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Password</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </span>
+                  <input type="password" id="signupPassword" class="form-input" placeholder="Min. 8 characters"
+                    autocomplete="new-password" />
+                  <button type="button" class="toggle-password" data-target="signupPassword">
+                    <svg class="eye-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg class="input-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </span>
+                  <input type="password" id="signupConfirm" class="form-input" placeholder="Re-enter password"
+                    autocomplete="new-password" />
+                </div>
+              </div>
+              <div class="password-strength" id="passwordStrength" style="display:none">
+                <div class="strength-label">Password Strength: <span id="strengthLabel">Weak</span></div>
+                <div class="strength-bar">
+                  <div id="strengthFill" class="strength-fill"></div>
+                </div>
+              </div>
+              <div id="signupError" class="form-error hidden"></div>
+              <div id="signupSuccess" class="form-success hidden">
+                ✅ Account created! Please check your email to confirm your account before logging in.
+              </div>
+              <button type="submit" class="btn-submit" id="btnSignup">
+                <span class="btn-text">Create Account</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Footer Note -->
+          <p class="auth-footer-note">
+            Only VIT authorized email addresses are permitted.
+            Contact IT support if you experience issues.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESET PASSWORD TOAST -->
+  <div id="resetToast" class="toast hidden">Verification email sent! Check your inbox.</div>
+
+  <!-- ================================================
+       MAIN APP (after auth)
+  ================================================= -->
+  <div id="app" class="hidden">
+    <!-- TOP NAVIGATION -->
+    <header class="topbar glass-panel" style="display:flex; justify-content:space-between; padding:0.75rem 2rem;">
+      <div class="brand">
+        <span class="logo-text">ScappyV <span class="badge" id="roleBadge">Student</span></span>
+      </div>
+      <div class="admin-nav hidden" id="adminTopNav">
+        <button class="nav-tab active"
+          onclick="switchInnerTab('adminPortal', 'adminDashboard', this)">Dashboard</button>
+        <button class="nav-tab" onclick="switchInnerTab('adminPortal', 'adminIssues', this)">Issues</button>
+        <button class="nav-tab"
+          onclick="switchInnerTab('adminPortal', 'adminNotifications', this)">Notifications</button>
+        <button class="nav-tab disabled" aria-disabled="true">Reports</button>
+        <button class="nav-tab disabled" aria-disabled="true">Settings</button>
+      </div>
+      <div class="admin-nav hidden" id="studentTopNav">
+        <button class="nav-tab active" onclick="switchInnerTab('studentPortal', 'studentReport', this)">Report
+          Issue</button>
+        <button class="nav-tab"
+          onclick="switchInnerTab('studentPortal', 'studentNotifications', this)">Notifications</button>
+      </div>
+      <div class="user-controls">
+        <span id="userEmailDisplay" style="color:var(--text-muted); font-size:0.9rem;">user@vit.ac.in</span>
+        <button id="btnLogout" class="btn-ghost btn-small">Logout</button>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- STUDENT PORTAL -->
+      <section id="studentPortal" class="portal-section hidden">
+
+        <div id="studentReport" class="inner-section glass-panel form-container stagger-3">
+          <form id="issueForm">
+            <div class="grid-form">
+              <div class="form-group slide-up-anim">
+                <label>Building / Block</label>
+                <select id="issueBuilding" class="form-input" required>
+                  <option value="">Loading buildings...</option>
+                </select>
+              </div>
+              <div class="form-group slide-up-anim">
+                <label>Category</label>
+                <select id="issueCategory" class="form-input" required>
+                  <option value="">Select category...</option>
+                  <option value="Classroom">Classroom</option>
+                  <option value="Washroom">Washroom</option>
+                  <option value="Faculty Cabin">Faculty Cabin</option>
+                  <option value="Face ID / Security">Face ID / Security</option>
+                  <option value="IT / Network">IT / Network</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group slide-up-anim">
+                <label>Room / Cabin No.</label>
+                <input type="text" id="issueRoom" class="form-input" placeholder="e.g. 205A" required />
+              </div>
+              <div class="form-group hidden slide-up-anim" id="genderGroup">
+                <label>Washroom Gender</label>
+                <select id="issueGender" class="form-input">
+                  <option value="Boys">Boys</option>
+                  <option value="Girls">Girls</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group slide-up-anim" style="margin-top: 1rem;">
+              <label>Describe the Issue</label>
+              <textarea id="issueDescription" class="form-input" rows="4"
+                placeholder="Be specific. e.g., The projector in SJT 205 is displaying distorted colors."
+                required></textarea>
+            </div>
+            <div class="form-group slide-up-anim">
+              <label>Evidence (Optional Photo)</label>
+              <div class="file-upload-wrapper">
+                <input type="file" id="issueImage" accept="image/*" class="file-input-hidden" />
+                <label for="issueImage" class="file-upload-label">
+                  <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path class="draw-path-portal" pathLength="100"
+                      d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                  </svg>
+                  <span id="fileUploadText">Click to browse or drag image here</span>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" id="btnSubmitIssue" style="margin-top: 1rem;">Submit
+              Issue</button>
+          </form>
+        </div>
+
+        <div id="studentNotifications" class="inner-section glass-panel table-container hidden stagger-3">
+          <h2>Your Notifications</h2>
+          <div id="studentNotificationsList" class="notifications-list">
+            <p style="color:var(--text-muted); text-align:center;">No notifications yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLOATING TOP-LEFT NOTIFICATION -->
+      <div id="triageResult" class="triage-alert hidden">
+        <div class="triage-toast-content">
+          <svg class="triage-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path class="triage-draw-circle" pathLength="100" d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <path class="triage-draw-check" pathLength="100" d="M22 4L12 14.01l-3-3" />
+          </svg>
+          <div class="triage-text">
+            <h4>Notification</h4>
+            <p id="triageMessage">Routed to: <strong id="triageDept">...</strong><br />Priority: <strong
+                id="triagePriority">...</strong>
+            </p>
+          </div>
+        </div>
+        <div class="triage-toast-timeout-bar"></div>
+      </div>
+
+      <!-- ADMIN PORTAL -->
+      <section id="adminPortal" class="portal-section hidden">
+        <div class="portal-header">
+          <h1>Admin Control Center</h1>
+          <p>Real-time analytics and intelligent routing of campus infrastructure issues.</p>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="adminDashboard" class="inner-section w-full">
+          <!-- Top KPI Row -->
+          <div class="metrics-grid">
+
+            <div class="kpi-card glass-panel">
+              <div class="kpi-card-header">
+                <h3>PENDING ISSUES</h3>
+                <span class="kpi-stat warning">+20% WoW</span>
+              </div>
+              <div class="kpi-card-body">
+                <div class="metric-value pending-color" id="metricPending">0</div>
+                <div class="kpi-chart-area">
+                  <svg class="line-chart-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <path d="M0,35 C20,30 30,10 50,25 C70,40 80,10 100,5" fill="none" stroke="#f59e0b"
+                      stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+                  </svg>
+                  <small>Last 7 days</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="kpi-card glass-panel">
+              <div class="kpi-card-header">
+                <h3>RESOLVED TODAY</h3>
+                <span class="kpi-stat success">+5% WoW</span>
+              </div>
+              <div class="kpi-card-body">
+                <div class="metric-value resolved-color" id="metricResolved">0</div>
+                <div class="kpi-chart-area bar-chart-area">
+                  <div class="bar" style="height: 40%; background: #3b82f6;"></div>
+                  <div class="bar" style="height: 70%; background: #3b82f6;"></div>
+                  <div class="bar" style="height: 50%; background: #3b82f6;"></div>
+                  <div class="bar" style="height: 80%; background: #22c55e;"></div>
+                  <div class="bar" style="height: 60%; background: #22c55e;"></div>
+                  <div class="bar" style="height: 95%; background: #3b82f6;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="kpi-card glass-panel">
+              <div class="kpi-card-header">
+                <h3>HIGH PRIORITY</h3>
+                <span class="kpi-stat success-text">Status: CLEAR</span>
+              </div>
+              <div class="kpi-card-body">
+                <div class="metric-value high-color" id="metricHigh">0</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Main Layout Grid Row 2 -->
+          <div class="dashboard-main-row">
+
+            <!-- Left Panel: Activity Feed -->
+            <div class="dash-panel glass-panel feed-panel">
+              <h3>RECENT ACTIVITY FEED</h3>
+              <div class="feed-scroller" id="dashActivityFeed">
+                <p style="color:var(--text-muted); font-size:0.9rem;">Loading feed...</p>
+                <!-- JS will populate -->
+              </div>
+            </div>
+
+            <!-- Center Panel: Live System -->
+            <div class="dash-panel glass-panel center-live-panel">
+              <div class="live-system-wrapper">
+
+                <!-- Connector Lines Background -->
+                <svg class="synergy-lines" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                  <!-- Top Left to Center -->
+                  <path class="animated-line" d="M 80,80 L 150,110 L 200,150" fill="none"
+                    stroke="rgba(99, 102, 241, 0.4)" stroke-width="2" />
+                  <circle cx="80" cy="80" r="3" fill="#818cf8" />
+
+                  <!-- Bottom Left to Center -->
+                  <path class="animated-line delay-1" d="M 80,220 L 150,190 L 200,150" fill="none"
+                    stroke="rgba(99, 102, 241, 0.4)" stroke-width="2" />
+                  <circle cx="80" cy="220" r="3" fill="#818cf8" />
+
+                  <!-- Top Right to Center -->
+                  <path class="animated-line delay-2" d="M 320,80 L 250,110 L 200,150" fill="none"
+                    stroke="rgba(34, 197, 94, 0.4)" stroke-width="2" />
+                  <circle cx="320" cy="80" r="3" fill="#22c55e" />
+
+                  <!-- Bottom Right to Center -->
+                  <path class="animated-line delay-3" d="M 320,220 L 250,190 L 200,150" fill="none"
+                    stroke="rgba(239, 68, 68, 0.4)" stroke-width="2" />
+                  <circle cx="320" cy="220" r="3" fill="#ef4444" />
+                </svg>
+
+                <!-- The main ring -->
+                <div class="live-activity-ring">
+                  <svg viewBox="0 0 100 100" class="ring-svg">
+                    <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                    <circle cx="50" cy="50" r="45" class="ring-progress"></circle>
+                  </svg>
+                  <div class="ring-label">LIVE<br />SYSTEM</div>
+                </div>
+
+                <!-- Peripheral Nodes -->
+                <div class="sys-node pos-tl">
+                  <div class="node-circle">25%</div>
+                  <div class="node-text">CPU Load<br />(25%)</div>
+                </div>
+                <div class="sys-node pos-bl">
+                  <div class="node-circle">5ms</div>
+                  <div class="node-text">API Response<br />Time (5ms)</div>
+                </div>
+                <div class="sys-node pos-tr">
+                  <div class="node-circle success-border">60%</div>
+                  <div class="node-text">Memory<br />(60%)</div>
+                </div>
+                <div class="sys-node pos-br">
+                  <div class="node-circle wave-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                      <path d="M2 12h4l3-9 5 18 3-9h5" />
+                    </svg>
+                  </div>
+                  <div class="node-text">Live Network<br />Traffic</div>
+                </div>
+              </div>
+
+              <div class="soundwave-container pos-bottom-audio">
+                <div class="sound-bar" style="height:40%"></div>
+                <div class="sound-bar" style="height:70%"></div>
+                <div class="sound-bar" style="height:30%"></div>
+                <div class="sound-bar" style="height:100%"></div>
+                <div class="sound-bar" style="height:20%"></div>
+                <div class="sound-bar" style="height:50%"></div>
+                <div class="sound-bar" style="height:80%"></div>
+                <div class="sound-bar" style="height:30%"></div>
+                <div class="sound-bar" style="height:60%"></div>
+                <div class="sound-bar" style="height:20%"></div>
+                <div class="sound-bar" style="height:90%"></div>
+                <div class="sound-bar" style="height:40%"></div>
+              </div>
+            </div>
+
+            <!-- Right Panel: Map -->
+            <div class="dash-panel glass-panel map-panel">
+              <p style="font-size: 0.82rem; color: #94a3b8; margin-bottom:1rem; line-height: 1.4;">VIT Vellore, remote
+                Cluster points for reported issues, allowing drill down.</p>
+              <div class="campus-map-wrapper">
+                <!-- Aesthetic Mock Map -->
+                <svg class="mock-map-svg" viewBox="0 0 400 250">
+                  <path class="map-building" d="M 50,50 h 40 v 60 h -40 z" />
+                  <path class="map-building" d="M 120,40 h 70 v 40 h -70 z" />
+                  <path class="map-building" d="M 100,130 h 100 v 80 h -100 z" />
+                  <path class="map-building" d="M 220,100 h 60 v 50 h -60 z" />
+                  <path class="map-building" d="M 250,180 h 90 v 40 h -90 z" />
+                  <path class="map-building" d="M 310,40 h 50 v 50 h -50 z" />
+                  <path class="map-path" d="M 0,110 C 150,120 200,90 400,100" />
+                  <path class="map-path" d="M 180,0 C 170,100 250,200 240,250" />
+                </svg>
+                <!-- Node points -->
+                <div class="map-node node-warning" style="top: 25%; left: 16%;"></div>
+                <div class="map-node node-success" style="top: 60%; left: 35%;"></div>
+                <div class="map-node node-danger" style="top: 45%; left: 60%;"></div>
+                <div class="map-node node-info" style="top: 80%; left: 75%;"></div>
+
+                <!-- Legend in map -->
+                <div class="map-legend">
+                  <div><span style="background:var(--success)"></span> Cluster</div>
+                  <div><span style="background:var(--danger)"></span> Reported</div>
+                </div>
+
+                <div class="map-drilldown">Drill down ↘</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Row: Dept Performance -->
+          <div class="dash-panel glass-panel perf-panel">
+            <h3 style="margin-bottom: 1.5rem; font-size:0.85rem; color:#94a3b8; letter-spacing:1px;">DEPARTMENT
+              PERFORMANCE</h3>
+            <div class="perf-row">
+              <label>Maintenance Department</label>
+              <div class="perf-track">
+                <div class="perf-fill" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div class="perf-row">
+              <label>CDC Office</label>
+              <div class="perf-track">
+                <div class="perf-fill" style="width: 45%;"></div>
+              </div>
+            </div>
+            <div class="perf-row">
+              <label>IT & Network</label>
+              <div class="perf-track">
+                <div class="perf-fill" style="width: 65%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Issues Tab -->
+        <div id="adminIssues" class="inner-section glass-panel table-container hidden w-full">
+          <div class="table-header">
+            <h2>Active Incoming Issues</h2>
+            <button class="btn-ghost" id="btnRefreshAdmin">↻ Refresh</button>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Location</th>
+                <th>Category</th>
+                <th>Department</th>
+                <th>Priority</th>
+                <th>Date</th>
+                <th>Status / Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody">
+              <tr>
+                <td colspan="6" style="text-align:center;padding:2rem;">Loading issues...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div id="adminNotifications" class="inner-section glass-panel table-container hidden w-full">
+          <h2>Admin Notifications</h2>
+          <div id="adminNotificationsList" class="notifications-list">
+            <p style="color:var(--text-muted); text-align:center;">No new system activity.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTIFICATION DETAILS MODAL -->
+      <div id="notificationDetailsModal" class="modal-overlay hidden">
+        <div class="glass-panel form-container"
+          style="max-width: 500px; animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+          <h2 style="margin-bottom:0.5rem">Issue Resolution Details</h2>
+          <div id="notifDetailsContent"
+            style="margin-bottom: 1.5rem; text-align: left; line-height: 1.6; color: var(--text-muted); font-size: 0.95rem;">
+            <!-- populated by JS -->
+          </div>
+          <button id="btnCloseNotifDetails" class="btn-ghost" style="width: 100%;">Close</button>
+        </div>
+      </div>
+
+      <!-- RESOLVE ISSUE MODAL -->
+      <div id="resolveModal" class="modal-overlay hidden">
+        <div class="glass-panel form-container"
+          style="max-width: 450px; animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+          <h2 style="margin-bottom:0.5rem">Resolve Issue</h2>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Upload proof of completion to
+            notify the student.</p>
+
+          <div class="file-upload-wrapper">
+            <input type="file" id="resolveImage" accept="image/*" class="file-input-hidden" />
+            <label for="resolveImage" class="file-upload-label" style="padding: 2rem;">
+              <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+              </svg>
+              <span id="resolveUploadText">Upload Resolution Image</span>
+            </label>
+          </div>
+
+          <button id="btnConfirmResolve" class="btn-primary" style="margin-top: 1.5rem;">Confirm & Resolve</button>
+          <button id="btnCancelResolve" class="btn-ghost" style="margin-top: 0.75rem; width: 100%;">Cancel</button>
+        </div>
+      </div>
+
+
+      <!-- HEAD ADMIN BOT -->
+      <div id="head-admin-bot" class="hidden">
+        <div class="bot-fab" id="botFab" style="padding: 0; overflow: hidden;">
+          <img src="bot-avatar.png" alt="AI Agent"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+        <div class="bot-window hidden" id="botWindow">
+          <div class="bot-header">
+            <span>ResolveAI Assistant</span>
+            <button id="closeBotBtn" class="btn-ghost" style="padding: 5px 10px; min-width: 0;">✕</button>
+          </div>
+          <div class="bot-messages" id="botMessages">
+            <div class="bot-msg ai">Hello Head Admin! I can give you stats, generate PDF reports, or drop issues. Ask me
+              anything!</div>
+          </div>
+          <div class="bot-input-area">
+            <input type="text" id="botInput" class="bot-input" placeholder="Tally issues, generate report..." />
+            <button id="botSendBtn" class="bot-send">➤</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- PDF Generation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+  <script type="module">
+    import { animate } from "https://cdn.jsdelivr.net/npm/motion@11.11.4/+esm";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Premium spring animations for form inputs (Email, Password, Department)
+      const inputs = document.querySelectorAll('.form-input');
+
+      inputs.forEach(input => {
+        const wrapper = input.closest('.input-wrapper, .input-icon-wrapper');
+        const icon = wrapper ? wrapper.querySelector('.input-icon, i') : null;
+
+        input.addEventListener('focus', () => {
+          // Bouncy input elevate
+          animate(input, {
+            scale: 1.02,
+            y: -2,
+            boxShadow: "0 0 0 3px var(--primary-glow)",
+            borderColor: "var(--primary)",
+            backgroundColor: "rgba(255, 255, 255, 0.06)"
+          }, { type: "spring", stiffness: 400, damping: 20 });
+
+          // Icon shift
+          if (icon) {
+            animate(icon, { x: 3, opacity: 1 }, { type: "spring", stiffness: 300, damping: 20 });
+          }
+        });
+
+        input.addEventListener('blur', () => {
+          animate(input, {
+            scale: 1,
+            y: 0,
+            boxShadow: "0 0 0 0px var(--primary-glow)",
+            borderColor: "rgba(255, 255, 255, 0.08)",
+            backgroundColor: "var(--input-bg)"
+          }, { duration: 0.3, ease: [0.16, 1, 0.3, 1] });
+
+          if (icon) {
+            animate(icon, { x: 0, opacity: 0.7 }, { duration: 0.3 });
+          }
+        });
+      });
+
+      // 2. Hide/Show Password Icon "Pop" mechanism
+      const toggleBtns = document.querySelectorAll('.toggle-password');
+      toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Play a delightful pop and spin animation
+          animate(btn, {
+            scale: [1, 0.6, 1.2, 1],
+            rotate: [0, -15, 15, 0]
+          }, {
+            duration: 0.5,
+            ease: "easeInOut"
+          });
+        });
+
+        btn.addEventListener('mouseenter', () => {
+          animate(btn, { scale: 1.1 }, { type: "spring", stiffness: 400 });
+        });
+
+        btn.addEventListener('mouseleave', () => {
+          animate(btn, { scale: 1 }, { type: "spring", stiffness: 400 });
+        });
+      });
+    });
+  </script>
+
+  <!-- Lenis for Premium Momentum Scrolling -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script type="module">
+    import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.4/+esm";
+
+    // 1. Init Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      wheelMultiplier: 1.2
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 2. Scroll Reveal Animations (Motion.dev)
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animate major panels as they come into view
+      inView(".glass-panel", (info) => {
+        animate(info.target,
+          { opacity: [0, 1], y: [40, 0] },
+          { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+        );
+      });
+
+      // Animate table rows progressively
+      inView("tbody tr", (info) => {
+        animate(info.target,
+          { opacity: [0, 1], x: [-15, 0] },
+          { duration: 0.5, ease: "easeOut" }
+        );
+      });
+    });
+  </script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
