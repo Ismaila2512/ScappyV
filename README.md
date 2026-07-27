@@ -1,66 +1,80 @@
 <div align="center">
-  <!-- Use a placeholder or raw GitHub asset link if needed, but styling inline is nice -->
-  <h1>ScappyV</h1>
-  <p><strong>Next-Gen AI-Powered Campus Infrastructure Management for VIT Vellore</strong></p>
+  <img src="https://raw.githubusercontent.com/Ismaila2512/ScappyV/main/public/logo.png" width="160" alt="ScappyV Logo" />
   
-  <p>
-    <img src="https://img.shields.io/badge/Status-Beta-success?style=for-the-badge" alt="Status" />
-    <img src="https://img.shields.io/badge/Architecture-RAG-blue?style=for-the-badge" alt="RAG" />
-    <img src="https://img.shields.io/badge/UI-Glassmorphism-violet?style=for-the-badge" alt="UI" />
-  </p>
+  # ScappyV
+
+  **Next-Gen AI-Powered Campus Infrastructure Management for VIT Vellore**
+
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![Status: Active](https://img.shields.io/badge/Status-Active-success.svg)]()
+  [![Tech: Node.js](https://img.shields.io/badge/Tech-Node.js-339933.svg?logo=node.js&logoColor=white)]()
+  [![UI: Glassmorphism](https://img.shields.io/badge/UI-Glassmorphism-violet.svg)]()
+  [![Architecture: RAG](https://img.shields.io/badge/Architecture-RAG-8A2BE2.svg)]()
 </div>
 
-<br/>
+<br />
 
-## 🌌 The Vision
-Managing campus infrastructure at scale is inherently messy. ScappyV reimagines facility management not just as a ticketing system, but as an **intelligent, self-routing triage engine**. 
+> **The problem with campus management isn't reporting issues—it's routing them.**  
+> ScappyV replaces legacy ticketing systems with an **intelligent triage engine** that auto-routes, prioritizes, and resolves infrastructure issues in real-time.
 
-Instead of waiting for manual review, our AI instantly parses, prioritizes, and routes student-reported issues to the exact correct department (Maintenance, IT, Housekeeping, etc.)—all wrapped in a premium, glassmorphic interface that feels like a flagship product.
+<br />
+
+## 🌟 The Experience
+
+ScappyV is designed to feel like a flagship SaaS product, dropping the clunky "school project" aesthetic.
+
+- **Liquid Glass UI:** Deep dark-mode aesthetic with custom SVG animations, dynamic spring physics (Motion.dev), and smooth inertia scrolling (Lenis).
+- **Automated AI Triage:** No more manual sorting. Our logic engine parses the student's issue description and predicts exactly which department (Maintenance, IT, Housekeeping) needs to respond.
+- **RAG Resolution Workflow:** The embedded Head Admin Bot queries a Vector DB of past resolutions to instantly propose fixes without waiting for human intervention.
+- **Triple-Portal Architecture:** Granular, secure, real-time dashboards for Students, Faculty, and Admins.
 
 ---
 
-## ✨ What Makes ScappyV Unique?
+## 🏗️ Technical Architecture
 
-* **🧠 Automated AI Triage:** Leveraging specialized algorithms, incoming issues are instantly parsed. The engine extracts the context from the description and intelligently predicts the severity (priority) and the exact department responsible.
-* **🔎 RAG Resolution Workflow:** An integrated `Head Admin Bot` utilizes a Retrieval-Augmented Generation (RAG) pipeline to instantly query the entire database, drop redundant tickets, or query historical resolutions in real-time.
-* **🎭 Multi-Portal Ecosystem:** Granular, secure environments for Students, Faculty, and Admins—featuring role-based authentication and a rich administrative telemetrics dashboard.
-* **✨ Liquid Glass UI:** A heavy focus on visual craft. Designed with custom SVG icons (no emojis), spring physics via Motion.dev, smooth scrolling via Lenis, and an immersive dark aesthetic.
+Heavy frameworks were stripped out in favor of raw performance, paired with a robust, AI-native backend environment.
 
----
+| Layer | Technologies Used |
+|-------|-------------------|
+| **Frontend** | Vanilla JS, HTML5, CSS3, `Motion.dev`, `Lenis` *(Zero-bloat DOM manipulation)* |
+| **Backend** | `Node.js`, `Express`, TypeScript (`triage-engine.ts`) |
+| **Database** | `Supabase` (PostgreSQL) + `Firebase` |
+| **Intelligence** | Retrieval-Augmented Generation (RAG) |
 
-## 🛠️ Tech Stack
-
-- **Frontend:** HTML5, CSS3, ES6 JavaScript. Fully responsive, zero-framework DOM manipulation for lightning-fast performance.
-- **Backend:** Node.js with Express.
-- **Database:** Supabase (PostgreSQL) and Firebase integrations.
-- **Intelligence:** RAG pipeline & Custom AI Triage logic built in TypeScript (`triage-engine.ts`).
+> 🔍 **Deep Dive:** View our completed [RAG Workflow Architecture Diagram](https://raw.githubusercontent.com/Ismaila2512/ScappyV/main/public/rag_workflow.png).
 
 ---
 
 ## 🚀 Quick Start
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Ismaila2512/ScappyV.git
-   cd ScappyV
-   ```
+Get ScappyV running locally in under 2 minutes.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/Ismaila2512/ScappyV.git
+cd ScappyV
 
-3. **Configure Environment Setup**
-   * Create a `.env` file in the root.
-   * Add your required Supabase / Firebase / LLM API configurations.
+# 2. Install dependencies
+npm install
 
-4. **Launch**
-   ```bash
-   npm run dev
-   ```
-   *The application will boot up at `http://localhost:3000`.*
+# 3. Boot the server
+npm run dev
+```
+
+**Configuration:**
+1. Create a `.env` file in the root directory.
+2. Add your Supabase, Firebase, and LLM API keys.
+3. Open `http://localhost:3000` to interact with the portal.
 
 ---
+
+## 🛡️ Security
+
+ScappyV implements strict role-based access controls across student, faculty, and administrative boundaries. Core database routes are protected via authenticated token sessions to prevent privilege escalation between portals. 
+
+---
+
 <div align="center">
-<b>Stop chatting. Start shipping.</b>
+  <b>Built with grit and AI.</b><br>
+  Stop chatting. Start shipping.
 </div>
